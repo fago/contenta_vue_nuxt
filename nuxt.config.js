@@ -2,7 +2,7 @@ module.exports = {
   plugins: ['~plugins/vue-lazyload', '~plugins/app'],
   env: {
     // your JSON API server URL :
-    jsonApiServer: 'https://live-contentacms.pantheonsite.io',
+    jsonApiServer: 'http://contenta.local',
     jsonApiPrefix: 'api'
   },
   router: {
@@ -10,6 +10,7 @@ module.exports = {
      // when its down or when there is no internet connection
      middleware: 'server-api-available'
   },
+  mode: "universal",
   /*
   ** Build configuration
   */
