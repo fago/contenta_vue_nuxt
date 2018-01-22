@@ -36,7 +36,9 @@ import AppVersion from '~/components/AppVersion'
 export default {
   components: { AppVersion },
   computed: {
-    menu () { return this.$store.state.menu }
+    menu () {
+      return this.$store.state.menu
+    }
   },
   methods: {
     setMenuMobileIsOpened () {

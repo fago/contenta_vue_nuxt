@@ -8,12 +8,13 @@ import PageRecipesId from '~/components/PageRecipesId'
 export default {
   transition: 'page',
   components: { PageRecipesId },
-
-  async asyncData ({ params }) {
-    const combined_data = await getRecipePageData(params.id)
-    const recipe = combined_data[0].data;
-    const recipesByCategory = combined_data[1].data
-    return { recipe, recipesByCategory }
-  }
+  computed: {
+    recipe () {
+      return this.$store.state.routeData[0].data.attributes
+    },
+    recipesByCategory () {
+      return this.$store.state.routeData[1].data
+    }
+  },
 }
 </script>

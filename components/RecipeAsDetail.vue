@@ -1,6 +1,5 @@
 <template>
   <div>
-  
     <AppSection class="hero is-primary">
       <div class="hero-body">
         <div class="container">
@@ -8,14 +7,14 @@
         </div>
       </div>
     </AppSection>
-  
+
     <div class="container">
-  
+
       <AppSection>
         <div class="columns">
           <div class="column">
             <figure class="image is-3by2">
-              <img v-lazy="recipe.image.thumbnail.url" />
+
             </figure>
           </div>
           <div class="column">
@@ -35,7 +34,7 @@
                 <strong> {{recipe.totalTime }} min</strong>
               </div>
             </div>
-  
+
             <div class="columns">
               <div class="column has-text-centered">
                 <div>
@@ -55,7 +54,7 @@
           </div>
         </div>
       </AppSection>
-  
+
       <AppSection>
         <h2 class="title is-2 has-text-centered what-you-need"> What you'll need and how to make this dish</h2>
       </AppSection>
@@ -63,7 +62,7 @@
       <AppSection class="instructions">
         <div class="columns">
           <div class="column">
-  
+
             <div class="content notification">
               <h3 class="has-text-centered"> Ingredients </h3>
               <ul class="ingredients">
@@ -72,23 +71,23 @@
                 </li>
               </ul>
             </div>
-  
+
           </div>
           <div class="column">
-  
+
             <div class="content method">
               <h3 class="title has-text-centered"> Method </h3>
               <p>
                 {{recipe.instructions}}
               </p>
             </div>
-  
+
           </div>
         </div>
       </AppSection>
-  
+
     </div>
-  
+
   </div>
 </template>
 
@@ -115,4 +114,3 @@ export default {
 }
 
 </style>
-

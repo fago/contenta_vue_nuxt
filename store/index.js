@@ -1,5 +1,6 @@
 import Vuex from 'vuex'
 import axios from '~/plugins/axios'
+import {getRecipePageData} from '~/lib/api'
 
 /**
  * This our global store state for our app.
@@ -7,7 +8,8 @@ import axios from '~/plugins/axios'
 const createStore = () => new Vuex.Store({
   state: {
     menuMobileIsOpened: false,
-    menu: false
+    menu: false,
+    routeData: false
   },
   mutations: {
     setMenuMobileIsOpened (state, value) {
@@ -16,15 +18,20 @@ const createStore = () => new Vuex.Store({
     setMenu (state, menu) {
       state.menu = menu
     },
+    setRouteData (state, routeData) {
+      state.routeData = routeData
+    },
   },
   actions: {
-    nuxtServerInit ({ dispatch }) {
-      return dispatch('menu')
+    nuxtServerInit ({ dispatch }, { route }) {
+      return dispatch('routeData', route)
     },
-    menu ({commit}) {
-      axios.get('/api/menuLinks').then(resp => {
-        commit('setMenu', resp.data.data)
-      })
+    async routeData ({commit}, route) {
+      if (route.name == 'recipes-id') {
+        const combined_data = await getRecipePageData(route.params.id)
+        commit('setMenu', combined_data[2].data)
+        commit('setRouteData', combined_data)
+      }
     }
   }
 })
