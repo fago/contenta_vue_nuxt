@@ -10,7 +10,7 @@ export default {
   components: { PageRecipesId },
   computed: {
     recipe () {
-      return this.$store.state.routeData[0].data.attributes
+      return this.$store.state.routeData[0].data
     },
     recipesByCategory () {
       return this.$store.state.routeData[1].data
