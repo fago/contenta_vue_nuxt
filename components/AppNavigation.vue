@@ -7,27 +7,26 @@
           <br />
           <AppVersion />
         </span>
-  
+
         <div @click="setMenuMobileIsOpened" :class="{'is-active': this.$store.state.menuMobileIsOpened}" class="navbar-burger" data-target="app-menu">
           <span></span>
           <span></span>
           <span></span>
         </div>
-  
+
       </div>
-  
+
       <!-- This "nav-menu" is hidden on mobile -->
       <!-- Add the modifier "is-active" to display it on mobile -->
       <div id="app-menu" class="navbar-menu" :class="{'is-active': this.$store.state.menuMobileIsOpened}">
         <div class="navbar-end">
-          <nuxt-link to="/" class="navbar-item"> Home </nuxt-link>
-          <nuxt-link to="/recipes" class="navbar-item"> Recipes </nuxt-link>
-          <a href="https://github.com/contentacms/contenta_vue_nuxt" class="navbar-item"> Github </a>
-          <a href="http://www.contentacms.org/" class="navbar-item"> ContentaCMS website </a>
+          <nuxt-link v-for="item in menu" :key="item.id" :to="item.attributes.link" class="navbar-item">
+             {{ item.attributes.title }}
+           </nuxt-link>
           <!--<nuxt-link @click.native="displayMobileMenu = false" to="/magazine" class="nav-item"> Magazine </nuxt-link>-->
         </div>
       </div>
-  
+
     </nav>
   </div>
 </template>
@@ -36,6 +35,9 @@
 import AppVersion from '~/components/AppVersion'
 export default {
   components: { AppVersion },
+  computed: {
+    menu () { return this.$store.state.menu }
+  },
   methods: {
     setMenuMobileIsOpened () {
       this.$store.commit('setMenuMobileIsOpened', !this.$store.state.menuMobileIsOpened)
