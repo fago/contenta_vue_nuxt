@@ -16,5 +16,8 @@ export default {
       return this.$store.state.routeData[1].data
     }
   },
+  beforeCreate() {
+    this.$store.dispatch('routeData', this.$router.currentRoute)
+  }
 }
 </script>
