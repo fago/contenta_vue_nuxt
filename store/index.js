@@ -1,5 +1,4 @@
 import Vuex from 'vuex'
-import axios from '~/plugins/axios'
 import {getRecipePageData} from '~/lib/api'
 
 /**
@@ -29,6 +28,8 @@ const createStore = () => new Vuex.Store({
     async routeData ({commit}, route) {
       if (route.name == 'recipes-id') {
         const combined_data = await getRecipePageData(route.params.id)
+
+        console.log(combined_data[2].data, 'menu')
         commit('setMenu', combined_data[2].data)
         commit('setRouteData', combined_data)
       }
