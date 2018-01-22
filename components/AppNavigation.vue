@@ -20,7 +20,7 @@
       <!-- Add the modifier "is-active" to display it on mobile -->
       <div id="app-menu" class="navbar-menu" :class="{'is-active': this.$store.state.menuMobileIsOpened}">
         <div class="navbar-end">
-          <nuxt-link v-for="item in menu" :key="item.id" :to="item.link" class="navbar-item">
+          <nuxt-link v-for="item in menu" :key="item.id" :to="item.link.replace('internal:', '')" class="navbar-item">
              {{ item.title }}
            </nuxt-link>
           <!--<nuxt-link @click.native="displayMobileMenu = false" to="/magazine" class="nav-item"> Magazine </nuxt-link>-->
